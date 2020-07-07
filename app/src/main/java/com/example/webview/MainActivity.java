@@ -101,9 +101,9 @@ public class MainActivity extends AppCompatActivity {
                         browser.getSettings().setLoadsImagesAutomatically(true);
                         browser.getSettings().setJavaScriptEnabled(true);
                         browser.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-                        Pattern p = Pattern.compile("^https://*");
+                        Pattern p = Pattern.compile("^https://.*");
                         Matcher m = p.matcher(url.getText().toString());
-                        Pattern pi = Pattern.compile("^www.*.com$");
+                        Pattern pi = Pattern.compile("^www[.].*[.]com$");
                         Matcher z = pi.matcher(url.getText().toString());
                         if(m.matches())
                         {
@@ -145,55 +145,55 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        url.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // If the event is a key-down event on the "enter" button
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    // Perform action on key press
-                    if (url.getText().toString() != null &&
-                            (!url.getText().toString().equals(""))) {
-                        browser.getSettings().setLoadsImagesAutomatically(true);
-                        browser.getSettings().setJavaScriptEnabled(true);
-                        browser.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-                        Pattern p = Pattern.compile("^https://*");
-                        Matcher m = p.matcher(url.getText().toString());
-                        Pattern pi = Pattern.compile("^www.*.com$");
-                        Matcher z = pi.matcher(url.getText().toString());
-                        if(m.matches())
-                        {
-                            browser.loadUrl(url.getText().toString());
-                            downloadurl n = new downloadurl(url.getText().toString());
-                            n.start();
-                        }
-                        else if (z.matches()) {
-                            browser.loadUrl("https://" + url.getText().toString());
-                            downloadurl n = new downloadurl("https://" + url.getText().toString());
-                            n.start();
-                        }
-                        else
-                        {
-                            String j = url.getText().toString();
-                            String[] splitStr = j.trim().split("\\s+");
-                            String query=" ";
-                            for(int i =0 ; i<splitStr.length ; i++)
-                            {
-                                query=query+splitStr[i]+"+";
-                            }
-                            browser.loadUrl("https://www.google.com/search?q="+query+"&oq="+query);
-                            downloadurl n = new downloadurl("https://www.google.com/search?q="+query+"&oq="+query);
-                            n.start();
-                        }
-
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Invalid URL", Toast.LENGTH_LONG).show();
-                    }
-
-                    return true;
-                }
-                return false;
-            }
-        });
+//        url.setOnKeyListener(new View.OnKeyListener() {
+//            public boolean onKey(View v, int keyCode, KeyEvent event) {
+//                // If the event is a key-down event on the "enter" button
+//                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+//                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+//                    // Perform action on key press
+//                    if (url.getText().toString() != null &&
+//                            (!url.getText().toString().equals(""))) {
+//                        browser.getSettings().setLoadsImagesAutomatically(true);
+//                        browser.getSettings().setJavaScriptEnabled(true);
+//                        browser.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+//                        Pattern p = Pattern.compile("^https://*");
+//                        Matcher m = p.matcher(url.getText().toString());
+//                        Pattern pi = Pattern.compile("^www.*.com$");
+//                        Matcher z = pi.matcher(url.getText().toString());
+//                        if(m.matches())
+//                        {
+//                            browser.loadUrl(url.getText().toString());
+//                            downloadurl n = new downloadurl(url.getText().toString());
+//                            n.start();
+//                        }
+//                        else if (z.matches()) {
+//                            browser.loadUrl("https://" + url.getText().toString());
+//                            downloadurl n = new downloadurl("https://" + url.getText().toString());
+//                            n.start();
+//                        }
+//                        else
+//                        {
+//                            String j = url.getText().toString();
+//                            String[] splitStr = j.trim().split("\\s+");
+//                            String query=" ";
+//                            for(int i =0 ; i<splitStr.length ; i++)
+//                            {
+//                                query=query+splitStr[i]+"+";
+//                            }
+//                            browser.loadUrl("https://www.google.com/search?q="+query+"&oq="+query);
+//                            downloadurl n = new downloadurl("https://www.google.com/search?q="+query+"&oq="+query);
+//                            n.start();
+//                        }
+//
+//                    } else {
+//                        Toast.makeText(getApplicationContext(), "Invalid URL", Toast.LENGTH_LONG).show();
+//                    }
+//
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
 
         Button b = findViewById(R.id.button);
         b.setOnClickListener(new View.OnClickListener() {
@@ -204,9 +204,9 @@ public class MainActivity extends AppCompatActivity {
                     browser.getSettings().setLoadsImagesAutomatically(true);
                     browser.getSettings().setJavaScriptEnabled(true);
                     browser.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-                    Pattern p = Pattern.compile("^https://*");
+                    Pattern p = Pattern.compile("^https://.*");
                     Matcher m = p.matcher(url.getText().toString());
-                    Pattern pi = Pattern.compile("^www.*.com$");
+                    Pattern pi = Pattern.compile("^www[.].*[.]com$");
                     Matcher z = pi.matcher(url.getText().toString());
                     if(m.matches())
                     {

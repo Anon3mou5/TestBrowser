@@ -66,19 +66,19 @@ public class ServiceActivity extends AppCompatActivity {
             browser.getSettings().setJavaScriptEnabled(true);
             browser.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
             url.setText(urli);
-            Pattern p = Pattern.compile("^https://*");
+            Pattern p = Pattern.compile("^https://.*");
             Matcher m = p.matcher(url.getText().toString());
-            Pattern pi = Pattern.compile("^www.*.com$");
+            Pattern pi = Pattern.compile("^www[.].*[.]com$");
             Matcher z = pi.matcher(url.getText().toString());
             if(m.matches())
             {
-                browser.loadUrl(url.getText().toString());
-                downloadurl n = new downloadurl(url.getText().toString());
+                browser.loadUrl(urli);
+                downloadurl n = new downloadurl(urli);
                 n.start();
             }
             else if (z.matches()) {
-                browser.loadUrl("https://" + url.getText().toString());
-                downloadurl n = new downloadurl("https://" + url.getText().toString());
+                browser.loadUrl("https://" + urli);
+                downloadurl n = new downloadurl("https://" + urli);
                 n.start();
             }
         }
@@ -149,9 +149,9 @@ public class ServiceActivity extends AppCompatActivity {
                     browser.getSettings().setLoadsImagesAutomatically(true);
                     browser.getSettings().setJavaScriptEnabled(true);
                     browser.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-                    Pattern p = Pattern.compile("^https://*");
+                    Pattern p = Pattern.compile("^https://.*");
                     Matcher m = p.matcher(url.getText().toString());
-                    Pattern pi = Pattern.compile("^www.*.com$");
+                    Pattern pi = Pattern.compile("^www[.].*[.]com$");
                     Matcher z = pi.matcher(url.getText().toString());
                     if(m.matches())
                     {
@@ -204,7 +204,7 @@ public class ServiceActivity extends AppCompatActivity {
 
         }
         public void onReceivedHttpError (WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
-            Toast.makeText(view.getContext(), "HTTP error "+errorResponse.getStatusCode(), Toast.LENGTH_LONG).show();
+           // Toast.makeText(view.getContext(), "HTTP error "+errorResponse.getStatusCode(), Toast.LENGTH_LONG).show();
         }
 
 
